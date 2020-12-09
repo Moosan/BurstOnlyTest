@@ -25,12 +25,11 @@ public static class Fibonacci
     [RuntimeInitializeOnLoadMethod]
     private static void Initialize()
     {
-        var funcPtr = BurstCompiler.CompileFunctionPointer<CalcDelegate>(CalcBurstImpl);
+        var funcPtr = BurstCompiler.CompileFunctionPointer<CalcDelegate>(Calc40ThFibonacciBurst);
         _calcDelegate = funcPtr.Invoke;
     }
 
     [BurstCompile]
-    private static int CalcBurstImpl() => Calc40ThFibonacci();
     public static int Calc40ThFibonacciBurst()
     {
         return _calcDelegate();
